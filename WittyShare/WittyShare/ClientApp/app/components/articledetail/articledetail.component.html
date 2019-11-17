@@ -1,0 +1,134 @@
+<!-- Navbar (sit on top) -->
+<div class="w3-top" style="position:relative">
+  <div class="w3-bar w3-card" style="background-color:black" id="myNavbar">
+    <a style="color:white" class="w3-bar-item w3-button w3-wide">WITTY SHARES</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+
+      <a style="color:white" routerLink="/homepage" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-user"></i> HOME</a>
+      <a style="color:white" routerLink="/about" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-th"></i> ABOUT</a>
+      <a style="color:white" routerLink="/contact" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a style="color:white" routerLink="/login" class="w3-bar-item w3-button">LOG-OUT</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+<div id="content-wrapper" >
+  <section id="blog" style="background-image:url(http://www.wallpapers4u.org/wp-content/uploads/surface_background_dark_spots_35126_1920x1080.jpg)">
+    <div class="container white">
+      <div class="gap"></div>
+      <div class="row">
+        <aside class="col-sm-4 col-sm-push-8">
+
+          <div class="widget categories" *ngIf="useremail== article.creator.email">
+            <h3 class="widget-title"><b>Create Event</b></h3>
+
+            <button class="w3-button w3-block w3-teal" style="width:50%" (click)="onCreateEvent();">Create Event</button>
+          </div><!--/.categories-->
+          <div class="widget categories" *ngIf="useremail!= article.creator.email">
+            <h3 class="widget-title">Favourite</h3>
+            <button class="w3-button w3-block w3-teal" style="width:50%" (click)="onFavourite();"><b>Favourite</b></button>
+          </div><!--/.categories-->
+          <div class="widget tags">
+            <h3 class="widget-title"><b>Catagories</b></h3>
+            <ul class="tag-cloud" *ngFor="let cat of article.categories">
+              <li><p class="btn btn-xs btn-primary btn-outlined">{{cat}}</p></li>
+            </ul>
+          </div><!--/.tags-->
+
+        </aside>
+        <div class="col-sm-8 col-sm-pull-4" style="padding-left:40px">
+          <div class="blog">
+            <div class="blog-item">
+              <div class="blog-featured-image">
+                <img class="img-responsive img-blog"  src="{{article.image}}" alt="" />
+                <!--<div class="overlay">
+              <a class="preview btn btn-outlined btn-primary" href="blog-item.html" rel="prettyPhoto"><i class="fa fa-link"></i></a>
+            </div>-->
+              </div>
+              <div class="blog-content">
+                <h3 class="main-title" style="font-family:'Times New Roman', Times, serif;font-size:40px"><b>{{article.title}}</b></h3>
+                <div class="entry-meta">
+                  <span><i class="fa fa-user"></i>  {{article.creator.fullname}}</span>
+                  <span><i class="fa fa-folder"></i> Article</span>
+                </div>
+                <p class="lead">{{article.content}}</p>
+                <hr>
+                <div class="tags">
+                  <i style="padding-right:60px"></i>
+
+                  <input style="color:black;" size="1" type="text" name="amaz" [(ngModel)]="article.amazing" placeholder="0" readonly>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input style="color:black;" size="1" type="text" name="good" [(ngModel)]="article.good" placeholder="0" readonly>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input style="color:black" size="1" type="text" name="poor" [(ngModel)]="article.poor" placeholder="0" readonly>
+
+                </div>
+                <div class="tags">
+                  <i class="fa fa-tags" style="padding-right:40px"></i>
+
+                  <button type="button" class="btn btn-success" (click)="addAmazing();">Amazing </button>
+                  <i style="padding-right:120px"></i>
+                  <button type="button" class="btn btn-warning" (click)="addGood();">Good</button>
+                  <i style="padding-right:120px"></i>
+                  <button type="button" class="btn btn-danger" (click)="addPoor();">Poor</button>
+                </div>
+                <hr>
+                <div id="comments">
+                  <div id="comments-list">
+                    <h3>3 Comments</h3>
+                    <div class="media" *ngFor="let co of article.comments;">
+                      <div class="pull-left">
+                        <img class="avatar img-thumbnail comment-avatar" src="{{co.commentedBy.pic}}" alt="">
+                      </div>
+                      <div class="media-body">
+                        <div class="well">
+                          <button type="button"
+                                  id="testBtn"
+                                  class="btn btn-success glyphicon glyphicon-thumbs-up"
+                                  data-loading-text=" ... " (click)="upVote(co);">
+                            {{co.upVote}}
+                          </button>
+                          <button type="button" id="testBtnDown" class="btn btn-danger glyphicon glyphicon-thumbs-down" data-loading-text=" ... " (click)="downVote(co);">
+                            {{co.downVote}}
+                          </button>
+                          <span *ngIf="co.verified==true">
+                            <img src="https://cdn3.iconfinder.com/data/icons/simple-web-navigation/165/tick-512.png" height="30px" width="30px" />
+                          </span>
+                          <div class="media-heading">
+                            <strong></strong>&nbsp; <small>{{co.commentedBy.email}}</small>
+                            <span class="w3-right w3-opacity" (click)="viewProfile(co.commentedBy.personId)"><a>Commented By: {{co.commentedBy.fullname}}</a></span>
+                          </div>
+                          <p>{{co.commentData}}</p>
+                        </div>
+                      </div>
+                    </div><!--/.media-->
+
+                  </div><!--/#comments-list-->
+                  <div class="gap"></div>
+
+                  <div id="comment-form">
+                    <h3 class="main-title">Leave a comment</h3>
+                    <hr>
+                    <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                          <!--<input rows="8" class="form-control" placeholder="Comment" [(ngModel)]="str">-->
+                          <textarea class="input100" name="message" [(ngModel)]="str" placeholder="Your comment here..."></textarea>
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-outlined" (click)="addComment(str);">Submit Comment</button>
+                    </form>
+                  </div><!--/#comment-form-->
+                </div><!--/#comments-->
+              </div>
+            </div>
+
+          </div>
+        </div><!--/.col-md-8-->
+      </div><!--/.row-->
+    </div>
+  </section><!--/#blog-->
+</div>

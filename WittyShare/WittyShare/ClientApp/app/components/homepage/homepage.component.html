@@ -1,0 +1,198 @@
+<!-- Navbar (sit on top) -->
+<div class="w3-top" style="position:relative">
+  <div class="w3-bar w3-card" style="background-color:black" id="myNavbar">
+    <a style="color:white" class="w3-bar-item w3-button w3-wide">WITTY SHARES</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+
+      <a style="color:white" routerLink="/homepage" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-user"></i> HOME</a>
+      <a style="color:white" routerLink="/about" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-th"></i> ABOUT</a>
+      <a style="color:white" routerLink="/contact" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a style="color:white" routerLink="/login" class="w3-bar-item w3-button">LOG-OUT</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1900px;margin-top:5px;margin-left:-2px; background-image:url(http://demo.distinctivethemes.com/templates/impact/images/bg/bg1.jpg);background-repeat: no-repeat;background-size:cover">
+  <!-- Left Column -->
+  <div class="w3-row" style="align-content:initial">
+    <div class="w3-col m2" style="margin-top:10px; ">
+      <!-- Profile -->
+      <div class="w3-card w3-round " style="background-image:url(http://appsperia.keydesign-themes.com/demo5/images/bg.jpg);background-size:cover">
+        <div class="w3-container">
+          <br />
+          <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="onNewArticle();">New Article</button>
+          <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="onEditProfile();">Edit Profile</button>
+
+          <h2>Type</h2>
+          <input style="vertical-align: middle" class="label-input100" type="radio" name="type" value="Article" [(ngModel)]="type" (change)="onChangeType('Article')"><b> Article</b>
+          <br /><input style="vertical-align: middle" class="label-input100" type="radio" name="type" value="Event" [(ngModel)]="type" (change)="onChangeType('Event')"><b> Event</b>
+          <br /> <input class="label-input100" type="radio" name="type" value="MyArticle" [(ngModel)]="type" (change)="onChangeType('MyArticle')"><b> My Article</b>
+          <br /><input class="label-input100" type="radio" name="type" value="MyEvent" [(ngModel)]="type" (change)="onChangeType('MyEvent')"><b>
+            My Event
+          </b>
+          <br /><input class="label-input100" type="radio" name="type" value="MyFavourite" [(ngModel)]="type" (change)="onChangeType('MyFavourite')"><b>
+            My Favorites
+          </b>
+
+
+          <h2>Category</h2>
+          <input class="label-input100" type="radio" name="cat" value="All" [(ngModel)]="category" (change)="onChangeCategory('All')" checked> <b>
+            All
+          </b>
+          <br /> <input class="label-input100" type="radio" name="cat" value="Business & Finance" [(ngModel)]="category" (change)="onChangeCategory('Business & Finance')"><b>
+            Business & Finance
+          </b>
+          <br /> <input class="label-input100" type="radio" name="cat" value="Technology" [(ngModel)]="category" (change)="onChangeCategory('Technology')"> <b>
+            Technology
+          </b>
+          <br /> <input class="label-input100" type="radio" name="cat" value="Mathematics" [(ngModel)]="category" (change)="onChangeCategory('Mathematics')"> <b>
+            Mathematics
+          </b>
+          <br /><input class="label-input100" type="radio" name="cat" value="Sports & Games" [(ngModel)]="category" (change)="onChangeCategory('Sports & Games')"><b>
+            Sports & Games
+          </b>
+          <br /> <input class="label-input100" type="radio" name="cat" value="Science & Nature" [(ngModel)]="category" (change)="onChangeCategory('Science & Nature')"> <b>
+            Science & Nature
+          </b>
+          <br /> <input class="label-input100" type="radio" name="cat" value="Arts" [(ngModel)]="category" (change)="onChangeCategory('Arts')"><b>
+            Arts
+          </b>
+          <br /> <input class="label-input100" type="radio" name="cat" value="Food & Drink" [(ngModel)]="category" (change)="onChangeCategory('Food & Drink')"><b>
+            Food & Drink
+          </b>
+          <br /> <input class="label-input100" type="radio" name="cat" value="Miscellaneous" [(ngModel)]="category" (change)="onChangeCategory('Miscellaneous')"><b>
+            Miscellaneous
+          </b>
+          <br />
+          <span>
+            <br />
+            <input class="input101" type="text" placeholder="Search.." [(ngModel)]="search" name="search">
+          </span>
+          <span>
+            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="onSearch(search);">Search Article</button>
+          </span>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- The Grid -->
+    <div class="w3-col m10" style="margin-top:0px;">
+      <div class="w3-row" *ngIf="type=='Article' || type=='MyArticle' || type=='MyFavourite'" style="margin-top:0px; ">
+
+        <div class="w3-container w3-card w3-round w3-margin" *ngFor="let article of articleList" style=" background-image:url(http://appsperia.keydesign-themes.com/demo5/images/bg.jpg);background-size:cover">
+          <div style="">
+            <p class="" style="width:80%;Text-align:center;float:left; font-family: Montserrat-ExtraBold;font-size:70px;text-justify:auto;display:inline-block;line-height: 1.00;color:black">
+              {{article.title}}
+            </p>
+
+            <p style="Text-align:right;Width:20%;float:right;" (click)="viewProfile(article.creator.personId)"><a style="color:darkblue;font-size:18px"><b>Creator:</b><u> {{article.creator.fullname}}</u></a></p>
+            <p style="text-align: right"><b>Category:</b> &nbsp;{{article.categories}}</p>
+          </div>
+
+          <!--<div class="w3-container w3-card w3-round w3-margin" *ngFor="let article of articleList" style="background:#f1f1f1!important; background-image:url(http://appsperia.keydesign-themes.com/demo5/images/bg.jpg);background-size:cover">
+            <div style="width: 1200px;">
+              <p class="" style="Text-align:center; font-family: Montserrat-ExtraBold;font-size:70px;display:inline">
+                {{article.title}}
+              </p>
+              <p style="Text-align:right;float:right;display:inline;" (click)="viewProfile(article.creator.personId)"><a style="color:darkblue;font-size:18px;"><b>Creator:</b><u> {{article.creator.fullname}}</u></a></p>
+              <div style="Text-align:right;float:right;display:inline"><b>Category:</b> &nbsp;{{article.categories}}</div>
+            </div>-->
+          <!--<hr class="w3-clear">-->
+          <div class="w3-row-padding" style="padding-bottom:10px">
+            <img id="artimg" style="padding-top:30px" src="{{article.image}}" alt="Northern Lights" class="w3-margin-bottom w3-round-large">
+            <p style="margin-left: 0px;font-size:20px;border-top: 2px solid black;padding-bottom:10px">{{article.content}}</p>
+          </div>
+          <button type="button" style="margin-right:0px" class="w3-button w3-theme-d1 w3-margin-bottom left" (click)="onArticleDetails(article.articleId)">More Details</button>
+        </div>
+
+      </div>
+      <!--<div class="w3-row" *ngIf="type=='Article' || type=='MyArticle' || type=='MyFavourite'" style="margin-top:0px; ">
+        <div class="w3-container w3-card w3-round w3-margin" *ngFor="let article of articleList" style="background:#f1f1f1!important;">
+          <div class="w3-row-padding">
+            <div class="w3-col l4 m6">
+              <img class="w3-image w3-round-large w3-hide-small w3-grayscale" src="{{article.image}}" alt="App" >
+              <span style="text-align: right;" (click)="viewProfile(article.creator.personId)"><a style="color:darkblue;font-size:18px"><b>Creator: {{article.creator.fullname}}</b></a></span>
+            </div>
+            <div class="w3-col l8 m6">
+              <h1 class="w3-jumbo"><b>{{article.title}}</b></h1>
+              <h1 class="w3-xxxlarge w3-text-red"><b>{{article.categories}}</b></h1>
+              <p>
+                <span class="w3-xlarge">{{article.content}}</span>
+              </p>
+            </div>
+          </div>
+          </div>
+        </div>-->
+      <!--EVENTS-->
+      <div class="w3-row" *ngIf="type=='Event' || type=='MyEvent'">
+
+
+        <div class="w3-container w3-card w3-round w3-white" style="width:1000px; padding-left:60px;margin-left:200px; margin-top:40px; background-image:url(http://appsperia.keydesign-themes.com/demo5/images/bg.jpg);background-size:cover" *ngFor="let event of eventList">
+          <!--<br>
+          <span class="w3-right w3-opacity">Event Date: {{event.eventDate | date:'MM/dd/yyyy'}}</span><br />
+          <span class="w3-right w3-opacity">Event Time: {{event.eventDate | date:'hh:mm a'}}</span>
+          
+          <hr class="w3-clear">-->
+
+          <div class="w3-row-padding" style="margin:0 -16px">
+            <!--<span>
+              <img src="https://cdn3.iconfinder.com/data/icons/ballicons-reloaded-vol-1/512/icon-31-256.png" style="width:100px;height:100px" />
+              </span>
+            <span>
+              <p style="text-align: center;font-size:40px"><b>{{event.eventName}}</b></p><br>
+            </span>
+            <h3 style="margin-left: 110px;"><b>Article Name:</b>{{event.eventArticle.title}}</h3>
+            <p>People Attending</p>
+            <ul *ngFor="let p of event.peopleAttending">
+              <li (click)="viewProfile(p.personId)"><a style="color:darkblue;"><b>{{p.fullname}}</b></a></li>
+            </ul>-->
+
+
+            <div style="padding-top:10px">
+
+              <div class="" style="width:20%;Text-align:left;float:left; font-family: Montserrat-ExtraBold;font-size:70px;text-justify:auto;display:inline-block;line-height: 1.00;color:black">
+
+                <p class="brand-logo" style="padding-top:10px"><img class="logoimage" src="https://cdn3.iconfinder.com/data/icons/ballicons-reloaded-vol-1/512/icon-31-256.png"></p>
+
+
+                <br /> <span class="" style="Text-align:left;float:left;padding-top:5px; font-family: Montserrat-ExtraBold;font-size:20px;display:inline-block;color:black"><b>Address:</b><br /> {{event.address}}</span>
+                <br /> <span class="" style="Text-align:left;float:left;padding-top:10px; font-family: Montserrat-ExtraBold;font-size:20px;display:inline-block;color:black"><b>Event Date:</b><br /> {{event.eventDate | date:'MM/dd/yyyy'}}</span>
+                <br /> <span class="" style="Text-align:left;float:left; font-family: Montserrat-ExtraBold;font-size:20px;display:inline-block;color:black"><b>Event Time:</b><br /> {{event.eventDate | date:'hh:mm a'}}</span>
+
+              </div>+
+              <div style="Text-align:left;Width:80%;float:left;">
+                <p style="font-size:45px;font-family: Montserrat-ExtraBold;color:black"><b>Event:</b>  {{event.eventName}} </p>
+                <img src="{{event.eventArticle.image}}" style="width:200px;height:200px;margin-right:60px;float:right;text-align:right; " />
+                <p style="text-align: left;font-size:20px"><b>Article Title:</b> &nbsp;{{event.eventArticle.title}}</p>
+                <p style="font-size:20px;color:black;font-family: Montserrat-ExtraBold;"><b>People Attending:</b></p>
+                <ul style="float:left;" *ngFor="let p of event.peopleAttending">
+                  <li (click)="viewProfile(p.personId)"><a style="color:darkblue;"><b>{{p.fullname}}</b></a></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+          
+            </div>
+
+            <!--<div style="overflow:scroll;height:340px; "></div>-->
+          </div>
+          <!--<button  type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="onViewLocation(event.eventId)">View Location</button>-->
+          <p style="color:red;line-height: 1.50;margin-left:0px">
+            <button style="margin-left:370px" type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="onAddPeople(event.eventId)">Attending</button>
+          </p>
+
+        </div>
+
+        <!-- End Grid -->
+      </div>
+    </div>
+  </div>
+  <!-- End Page Container -->
+</div>

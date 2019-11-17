@@ -1,0 +1,25 @@
+<!-- Navbar (sit on top) -->
+<div class="w3-top" style="position:relative">
+  <div class="w3-bar w3-card" style="background-color:black" id="myNavbar">
+    <a style="color:white" class="w3-bar-item w3-button w3-wide">WITTY SHARES</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+
+      <a style="color:white" routerLink="/homepage" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-user"></i> HOME</a>
+      <a style="color:white" routerLink="/about" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-th"></i> ABOUT</a>
+      <a style="color:white" routerLink="/contact" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a style="color:white" routerLink="/login" class="w3-bar-item w3-button">LOG-OUT</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<div>
+  Event Location
+</div>
+
+<div class="contact101-map" id="google_map" ng-data-map-x="lattitude" ng-data-map-y="longitude" data-pin="../assets/images/icons/map-marker.png" data-scrollwhell="0" data-draggable="1"></div>

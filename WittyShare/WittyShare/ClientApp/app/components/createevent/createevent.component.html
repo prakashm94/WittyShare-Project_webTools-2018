@@ -1,0 +1,85 @@
+<!-- Navbar (sit on top) -->
+<div class="w3-top" style="position:relative">
+  <div class="w3-bar w3-card" style="background-color:black" id="myNavbar">
+    <a style="color:white" class="w3-bar-item w3-button w3-wide">WITTY SHARES</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+
+      <a style="color:white" routerLink="/homepage" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-user"></i> HOME</a>
+      <a style="color:white" routerLink="/about" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-th"></i> ABOUT</a>
+      <a style="color:white" routerLink="/contact" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a style="color:white" routerLink="/login" class="w3-bar-item w3-button">LOG-OUT</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+<div class="container-contact100">
+  <div class="contact100-map" id="google_map" data-map-x="42.34" data-map-y="-71.10" data-pin="../assets/images/icons/map-marker.png" data-scrollwhell="0" data-draggable="1"></div>
+  <div class="wrap-contact100" style="display:block">
+    <form class="contact100-form validate-form">
+      <span class="contact100-form-title">
+        New Event
+      </span>
+      <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
+        <span class="label-input100">Event Title</span>
+        <!--<input class="input100" type="text" name="name" [(ngModel)]="event.eventName" placeholder="Enter your name">-->
+        <input class="input100" name="long" [(ngModel)]="event.eventName" placeholder="Event Title" [ngModelOptions]="{standalone: true}">
+        <span class="focus-input100"></span>
+      </div>
+      <div class="wrap-input100 validate-input" data-validate="Message is required">
+        <span class="label-input100">Event Date</span>
+        <!--<input class="input100" name="message"  placeholder="Your message here">-->
+
+        <div id="datetimepicker2" class="input-append">
+          <input data-format="MM/dd/yyyy HH:mm:ss PP" type="text" [(ngModel)]="event.eventDate" [ngModelOptions]="{standalone: true}">
+          <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+            </i>
+          </span>
+        </div>
+        <span class="focus-input100"></span>
+      </div>
+
+
+
+
+
+
+      <div class="wrap-input100 validate-input" data-validate="Address is required">
+        <span class="label-input100">Address</span>
+        <input class="input100" name="long" [(ngModel)]="event.address" placeholder="Your address" [ngModelOptions]="{standalone: true}">
+        <span class="focus-input100"></span>
+      </div>
+      <!--<div class="wrap-input100 validate-input" data-validate="Message is required">
+        <span class="label-input100">Latitude</span>
+        <input class="input100" name="lat" [(ngModel)]="event.lattitude" placeholder="Your lattitude" [ngModelOptions]="{standalone: true}">
+        <span class="focus-input100"></span>
+      </div>-->
+
+      <div class="container-contact100-form-btn">
+        <button class="contact100-form-btn" (click)="onCreateEvent();">
+          <span>
+            Submit
+            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="dropDownSelect1"></div>
+-

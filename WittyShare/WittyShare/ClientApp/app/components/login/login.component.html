@@ -1,0 +1,154 @@
+
+  <div class="limiter">
+    <div class="container-login100 ">
+
+        <div class="login101-more" style="background-image: url('http://www.fondoideas.com.uy/wp-content/uploads/2014/03/34.jpg');">
+            <div style="margin-left:30%; margin-bottom:20%" class="wrap-login101 p-t-190 p-b-30">
+                <form class="login101-form validate-form">
+                    <div class="login101-form-avatar">
+                       
+                    </div>
+
+                    <span class="login101-form-title p-t-20 p-b-45">
+                        LOGIN
+                    </span>
+
+                    <div class="wrap-input101 validate-input m-b-10" data-validate="Username is required">
+                        <input class="input101" type="text" name="email" [(ngModel)]="email"  placeholder="Username">
+                        <span class="focus-input101"></span>
+                        <span class="symbol-input101">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input101 validate-input m-b-10" data-validate="Password is required">
+                        <input class="input101" type="password" name="pass" [(ngModel)]="password" placeholder="Password">
+                        <span class="focus-input101"></span>
+                        <span class="symbol-input101">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                    </div>
+
+                    <div class="container-login101-form-btn p-t-10">
+                        <button class="login101-form-btn" (click)="onLogin();">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+      <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+        <form class="login100-form validate-form">
+          <span class="login100-form-title p-b-59">
+            Sign Up
+          </span>
+
+          <div class="wrap-input100 validate-input" data-validate="Name is required">
+            <span class="label-input100">Full Name</span>
+            <input class="input100" type="text" name="names" [(ngModel)]="person.fullname" placeholder="FullName...">
+            <span class="focus-input100"></span>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="Select gender">
+            <span class="label-input100">Gender</span><br />
+            <input class="label-input100" type="radio" name="gender" value="male" [(ngModel)]="person.gender" checked> Male
+            <input class="label-input100" type="radio" name="gender" value="female" [(ngModel)]="person.gender"> Female
+            <span class="focus-input100"></span>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="Contact is required">
+            <span class="label-input100">Contact Number</span>
+            <input class="input100" type="number" name="contactNumber" [(ngModel)]="person.contact" placeholder="Contact Number...">
+            <span class="focus-input100"></span>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+            <span class="label-input100">Email</span>
+            <input class="input100" type="text" name="email" [(ngModel)]="person.email" placeholder="Email address...">
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Password is required">
+            <span class="label-input100">Password</span>
+            <input class="input100" type="password" name="pass" [(ngModel)]="person.password" placeholder="*************">
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input">
+            <span class="label-input100">Profession</span>
+            <select name="Profession" [(ngModel)]="person.profession" required data-validate="Profession is required">
+              <option value="Teacher">Teacher</option>
+              <option value="Pharmacist">Pharmacist</option>
+              <option value="Lawyer">Lawyer</option>
+              <option value="Software Engineer">Software Engineer</option>
+              <option value="Accountant">Accountant</option>
+              <option value="Physician">Physician</option>
+              <option value="Engineer">Engineer</option>
+              <option value="Psychologist">Psychologist</option>
+              <option value="Mini">Mini</option>
+              <option value="Electrician">Electrician</option>
+              <option value="Mathematician">Mathematician</option>
+              <option value="Chef">Chef</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Experience is required">
+            <span class="label-input100">Experience</span>
+            <input class="input100" type="number" name="experience" [(ngModel)]="person.experience" placeholder="Working experience in Years">
+            <span class="focus-input100"></span>
+
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Degree Major is required">
+            <span class="label-input100">Major</span>
+            <input class="input100" type="text" name="degreeMajor" [(ngModel)]="person.degreeMajor" placeholder="List majors...">
+            <span class="focus-input100"></span>
+
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Degree is required">
+            <span class="label-input100">Major</span>
+
+            <select name="degree" [(ngModel)]="person.degree" required>
+              <option value="High School">High School</option>
+              <option value="Bachelors">Bachelors</option>
+              <option value="Masters">Masters</option>
+              <option value="Phd">Phd</option>
+            </select>
+            <span class="focus-input100"></span>
+
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="Image URL is required">
+            <span class="label-input100">Image URL</span>
+            <input class="input100" type="text" name="image" [(ngModel)]="person.pic" placeholder="Image url">
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="flex-m w-full p-b-33">
+            <div class="contact100-form-checkbox">
+              <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+              <label class="label-checkbox100" for="ckb1">
+                <span class="txt1">
+                  I agree to the
+                  <a href="#" class="txt2 hov1">
+                    Terms of User
+                  </a>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="container-login100-form-btn">
+            <div class="wrap-login100-form-btn">
+              <div class="login100-form-bgbtn"></div>
+              <button class="login100-form-btn" (click)="onSignUp();" type="submit">
+                Sign Up
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+ 
+<!--a [routerLink]="['/contact']">Check Details</a>-->

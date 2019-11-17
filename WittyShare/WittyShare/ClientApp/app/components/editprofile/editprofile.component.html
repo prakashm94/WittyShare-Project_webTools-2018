@@ -1,0 +1,104 @@
+<!-- Navbar (sit on top) -->
+<div class="w3-top" style="position:relative">
+  <div class="w3-bar w3-card" style="background-color:black" id="myNavbar">
+    <a style="color:white" class="w3-bar-item w3-button w3-wide">WITTY SHARES</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+
+      <a style="color:white" routerLink="/homepage" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-user"></i> HOME</a>
+      <a style="color:white" routerLink="/about" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-th"></i> ABOUT</a>
+      <a style="color:white" routerLink="/contact" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a style="color:white" routerLink="/login" class="w3-bar-item w3-button">LOG-OUT</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+<div class="container-contact100">
+  <div class="contact100-map" id="google_map" data-map-x="40.722047" data-map-y="-73.986422" data-pin="../assets/images/icons/map-marker.png" data-scrollwhell="0" data-draggable="1"></div>
+  <div class="wrap-contact100" style="display:block">
+    <form class="contact100-form validate-form">
+      <span class="contact100-form-title">
+        Edit Profile
+      </span>
+
+      <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
+        <span class="label-input100">Name</span>
+
+        <input class="input100" name="name" [(ngModel)]="person.fullname" value="person.fullname" placeholder="Your message here">
+        <!--<input class="input100" type="text" name="name" [(ngModel)]="person.fullname"  placeholder="Enter your name">-->
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Pic is required">
+        <span class="label-input100"><!--Name--></span>
+        <img src="{{person.pic}}" height="150px" width="150px" />
+        <!--<input class="input100" type="text" name="name" [(ngModel)]="person.fullname"  placeholder="Enter your name">-->
+        <!-- <span class="focus-input100"></span>-->
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Email is required">
+        <span class="label-input100">Email</span>
+
+        <input class="input100" name="email" type="email" [(ngModel)]="person.email" value="person.email" placeholder="Your email here">
+        <span class="focus-input100"></span>
+      </div>
+      <div class="wrap-input100 validate-input" data-validate="Profession is required">
+        <span class="label-input100">Profession</span>
+
+        <input class="input100" name="profession" type="text" [(ngModel)]="person.profession" value="{{person.profession}}">
+        <span class="focus-input100"></span>
+      </div>
+      <div class="wrap-input100 validate-input" data-validate="Experience is required">
+        <span class="label-input100">Experience</span>
+        <input class="input100" name="message" type="number" [(ngModel)]="person.experience" value="{{person.experience}}">
+        <span class="focus-input100"></span>
+      </div>
+      <div class="wrap-input100 validate-input" data-validate="Degree is required">
+        <span class="label-input100">Degree</span>
+        <input class="input100" name="degree" type="text" placeholder="Your message here" [(ngModel)]="person.degree" value="{{person.degree}}">
+        <span class="focus-input100"></span>
+      </div>
+      <div class="wrap-input100 validate-input" data-validate="Degree Major is required">
+        <span class="label-input100">Degree Major</span>
+        <input class="input100" name="degreeMajor" type="text" placeholder="Your message here" [(ngModel)]="person.degreeMajor" value="{{person.degreeMajor}}">
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Image URL is required">
+        <span class="label-input100">Image url</span>
+        <input class="input100" name="image" placeholder="Your pic here" [(ngModel)]="person.pic" value="{{person.pic}}">
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Skills is required">
+        <span class="label-input100">Skills</span><br />
+
+
+        <span class="input100" *ngFor="let skill of person.skills">
+          {{skill}} ,
+        </span>
+
+        <span class="focus-input100"></span>
+        <span >
+          <input class="input101" type="text" name="skill" [(ngModel)]="skill" placeholder="Add Skill...">
+        </span>
+        <span>
+          <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" (click)="AddSkill(skill);">Add Skill</button>
+        </span>
+      </div>
+      <div class="container-contact100-form-btn">
+        <button class="contact100-form-btn" (click)="onSubmit();">
+          <span>
+            Submit
+            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

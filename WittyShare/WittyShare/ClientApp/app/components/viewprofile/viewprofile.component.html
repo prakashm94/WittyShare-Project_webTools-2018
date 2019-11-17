@@ -1,0 +1,95 @@
+<!-- Navbar (sit on top) -->
+<div class="w3-top" style="position:relative">
+  <div class="w3-bar w3-card" style="background-color:black" id="myNavbar">
+    <a style="color:white" class="w3-bar-item w3-button w3-wide">WITTY SHARES</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+
+      <a style="color:white" routerLink="/homepage" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-user"></i> HOME</a>
+      <a style="color:white" routerLink="/about" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-th"></i> ABOUT</a>
+      <a style="color:white" routerLink="/contact" [queryParams]="{ foo: useremail }" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a style="color:white" routerLink="/login" class="w3-bar-item w3-button">LOG-OUT</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<div class="allpg">
+  <div class="sheath">
+    <div id="body-wrapper">
+
+      <div class="name">
+        <!--<input type="text" name="degree" placeholder="Full Name" style="  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(53,53,53, .4)), color-stop(100%, rgba(53,53,53,.8)));color:white; font-size:50px;" value="{{person.fullname}}" readonly>-->
+       <div style="  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(53,53,53, .4)), color-stop(100%, rgba(53,53,53,.8)));color:white; font-size:50px;">{{person.fullname}} </div>
+
+      </div>
+
+      <div class="row">
+        <div class="content">
+          <div><img class="me" src="{{person.pic}}" /></div>
+          <div class="info">
+            <p>
+              This is the profile to view different skills and contacts.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="head">Profile Statistics</div>
+      <div class="row" style="margin-left:750px">
+        <div class="col-1-3 stove">
+          <div class="title">Number of Articles</div>
+          <div class="cover">
+            <div class="title"> Article #</div>
+            <div class="stoveBreak"></div>
+            <div class="title">{{articleCount}}</div>
+
+          </div>
+        </div>
+       
+      </div>
+      <div class="head">Personal Information</div>
+      <div class="row">
+        <div class="col-1-3 stove">
+          <div class="title">Profession</div>
+          <div class="cover">
+            <div class="title"> {{person.profession}}</div>
+            <div class="stoveBreak"></div>
+            <div class="title">{{person.experience}}</div>
+          </div>
+        </div>
+        <div class="col-1-3 stove">
+          <div class="title">Degree</div>
+          <div class="cover">
+            <div class="title">{{person.degree}}</div>
+            <div class="stoveBreak"></div>
+            <div class="title">{{person.degreeMajor}}</div>
+
+          </div>
+        </div>
+        <div class="col-1-3 stove">
+          <div class="title">Contact</div>
+          <div class="cover">
+            <div class="title">{{person.email}}</div>
+            <div class="stoveBreak"></div>
+            <div class="title">{{person.contact}}"</div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="head">The Skills</div>
+
+      <div class="row" style="padding-left:300px;margin-left:450px" *ngFor="let skill of person.skills">
+        <div class="dot l">
+        <p> {{skill}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
